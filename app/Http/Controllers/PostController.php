@@ -10,6 +10,12 @@ class PostController extends Controller
 {
         public function index(Post $post)//インポートしたPostをインスタンス化して$postとして使⽤。
     {
-        return view('posts/index')->with(['posts' => $post->getpaginateByLimit()]);
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+    //getPaginateByLimit()はPost.phpで定義したメソッドです。
+    }
+    public function show(Post $post)
+    {
+        return view('posts/show')->with(['post' => $post]);
+        //'post'はbladeファイルで使う変数。中⾝は$postはid=1のPostインスタンス。
     }
 }
